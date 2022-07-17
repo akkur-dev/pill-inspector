@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>disable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets/Freepik-pill-719421.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\bqlqn-save-file.png" />
+    <None Remove="Assets\bukeicon-save-file.png" />
+    <None Remove="Assets\Freepik-redo.png" />
+    <None Remove="Assets\Freepik-undo.png" />
+    <None Remove="Assets\Karacis-add.png" />
+    <None Remove="Assets\Karacis-copy.png" />
+    <None Remove="Assets\Karacis-delete.png" />
+    <None Remove="Assets\Karacis-edit.png" />
+    <None Remove="Assets\Karacis-search.png" />
+    <None Remove="Assets\Kiranshastry-close-file.png" />
+    <None Remove="Assets\kmg design-open-folder.png" />
+    <None Remove="Assets\PIXARTIST-new-file.png" />
+    <None Remove="Assets\Rizki-Ahmad-Fauzi-close.png" />
+    <None Remove="Assets\Rizki-Ahmad-Fauzi-create.png" />
+    <None Remove="Assets\Rizki-Ahmad-Fauzi-open.png" />
+    <None Remove="Assets\Rizki-Ahmad-Fauzi-save.png" />
+    <None Remove="Assets\TravisAvery-add-file.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Freepik-redo.png" />
+    <Resource Include="Assets\Freepik-undo.png" />
+    <Resource Include="Assets\Karacis-add.png" />
+    <Resource Include="Assets\Karacis-copy.png" />
+    <Resource Include="Assets\Karacis-delete.png" />
+    <Resource Include="Assets\Karacis-edit.png" />
+    <Resource Include="Assets\Karacis-search.png" />
+    <Resource Include="Assets\Rizki-Ahmad-Fauzi-close.png" />
+    <Resource Include="Assets\Rizki-Ahmad-Fauzi-create.png" />
+    <Resource Include="Assets\Rizki-Ahmad-Fauzi-open.png" />
+    <Resource Include="Assets\Rizki-Ahmad-Fauzi-save.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.7" />
+  </ItemGroup>
+
+</Project>

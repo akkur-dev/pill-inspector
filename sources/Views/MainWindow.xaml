@@ -1,0 +1,148 @@
+﻿<Window x:Class="PillInspector.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PillInspector"
+        mc:Ignorable="d"
+        Title="Pill Inspector" 
+        Height="450" 
+        MinHeight="100"
+        Width="800"
+        MinWidth="800"
+        >
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <Menu 
+            Name="mainMenu" 
+            Grid.Row="0" 
+            Background="White"            
+            >
+            <MenuItem Header="Файл">
+                <MenuItem Header="Создать" InputGestureText="Ctrl+N"/>
+                <MenuItem Header="Открыть" InputGestureText="Ctrl+O"/>
+                <MenuItem Header="Сохранить" InputGestureText="Ctrl+S"/>
+                <MenuItem Header="Последние файлы" InputGestureText="Ctrl+R"/>
+                <MenuItem Header="Печать" InputGestureText="Ctrl+P"/>
+                <MenuItem Header="Закрыть"/>
+                <Separator/>
+                <MenuItem Header="Выход" InputGestureText="Alt+F4"/>
+            </MenuItem>
+            <MenuItem Header="Правка">
+                <MenuItem Header="Отменить" InputGestureText="Ctrl+Z"/>
+                <MenuItem Header="Повторить" InputGestureText="Ctrl+Y"/>
+                <Separator/>
+                <MenuItem Header="Копировать" InputGestureText="Ctrl+C"/>
+                <MenuItem Header="Вырезать" InputGestureText="Ctrl+X"/>
+                <MenuItem Header="Вставить" InputGestureText="Ctrl+V"/>
+                <Separator/>
+                <MenuItem Header="Выделить"/>
+                <MenuItem Header="Выделить все" InputGestureText="Ctrl+A"/>
+                <MenuItem Header="Снять выделение"/>
+            </MenuItem>
+            <MenuItem Header="Вид">
+                <MenuItem Header="Показать панель инструментов" IsCheckable="True" IsChecked="True"/>
+            </MenuItem>
+            <MenuItem Header="Настройки"/>
+            <MenuItem Header="Справка">
+                <MenuItem Header="Помощь"/>
+                <MenuItem Header="Лицензия"/>
+                <MenuItem Header="О программе"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid Grid.Row="1">
+            <ToolBar 
+            Name="mainToolBar" 
+            Background="White"
+            VerticalContentAlignment="Center"
+            >
+                <Button ToolTip="Создать файл"><Image Source="{StaticResource NewFile}"/></Button>
+                <Button ToolTip="Открыть файл"><Image Source="{StaticResource OpenFile}"/></Button>
+                <Button ToolTip="Сохранить файл"><Image Source="{StaticResource SaveFile}"/></Button>
+                <Button ToolTip="Закрыть файл"><Image Source="{StaticResource CloseFile}"/></Button>                
+                <Separator/>                
+                <Button ToolTip="Отменить"><Image Source="{StaticResource Undo}"/></Button>
+                <Button ToolTip="Повторить"><Image Source="{StaticResource Redo}"/></Button>                
+                <Separator/>                
+                <Button ToolTip="Добавить препарат"><Image Source="{StaticResource Add}"/></Button>
+                <Button ToolTip="Дублировать препарат"><Image Source="{StaticResource Copy}"/></Button>
+                <Button ToolTip="Редактировать препарат"><Image Source="{StaticResource Edit}"/></Button>
+                <Button ToolTip="Удалить препарат"><Image Source="{StaticResource Delete}"/></Button>                
+                <Separator/>
+                <StackPanel Orientation="Horizontal" Height="22">
+                    <StackPanel.Resources>
+                        <Style x:Key="cbStyle" TargetType="ComboBox">
+                            <Setter Property="Focusable" Value="False"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <TextBlock 
+                        Text="Показать"
+                        VerticalAlignment="Center"
+                        Margin="10 0"
+                        />
+                    <ComboBox 
+                        Name="expirationDateFilter" 
+                        Style="{StaticResource cbStyle}"
+                        SelectedIndex="0"
+                        ToolTip="Фильтр по сроку годности"
+                        >
+                        <ComboBoxItem Content="Все"/>
+                        <ComboBoxItem Content="Годные"/>
+                        <ComboBoxItem Content="Истекающие"/>
+                        <ComboBoxItem Content="Истекшие"/>
+                    </ComboBox>
+                </StackPanel>                
+            </ToolBar>
+            
+            <StackPanel 
+                Orientation="Horizontal"
+                Height="22"
+                Margin="0,0,15,0"
+                HorizontalAlignment="Right"
+                >
+                <TextBox Width="200" BorderThickness="1,1,0,1"/>
+                <Button BorderThickness="0" ToolTip="Найти препарат">
+                    <Image Source="{StaticResource Search}"/>
+                </Button>
+            </StackPanel>
+        </Grid>        
+
+        <DataGrid 
+            Name="mainDataGrid" 
+            Grid.Row="2"
+            Background="White"
+            BorderThickness="0"
+            Margin="0 10"
+            >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="" MinWidth="30" MaxWidth="30"/>
+                <DataGridTextColumn Header="Название" Width="*"/>
+                <DataGridTextColumn Header="Лекарственная группа" Width="*"/>
+                <DataGridTextColumn Header="Лекарственная форма" Width="*"/>
+                <DataGridTextColumn Header="Дата изготовления" Width="*"/>
+                <DataGridTextColumn Header="Годен до" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StatusBar Name="mainStatusBar" Grid.Row="3">
+            <StatusBarItem HorizontalAlignment="Left">
+                <TextBlock/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right" Margin="10 0">
+                <TextBlock Text="AkkurDev © 2022"/>
+            </StatusBarItem>
+        </StatusBar>
+        
+    </Grid>
+</Window>
